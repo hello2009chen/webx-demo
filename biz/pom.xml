@@ -3,13 +3,49 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>webx-demo</artifactId>
         <groupId>com.wellong</groupId>
+        <artifactId>webx-demo</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.wellong</groupId>
     <artifactId>biz</artifactId>
+    <name>biz</name>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.wellong</groupId>
+            <artifactId>dal</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <build>
 
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.10</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                    </includes>
+                    <argLine>-Xmx256m</argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
